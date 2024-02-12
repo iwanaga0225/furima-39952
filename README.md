@@ -14,7 +14,7 @@
 | birthday           | date   | null: false               |
 ### Association
 - has_many :items
-- has_many :records
+- has_many :orders
 
 
 ## items テーブル
