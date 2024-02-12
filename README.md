@@ -21,7 +21,6 @@
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| image              | text       | null: false                    |
 | name               | string     | null: false                    |
 | content            | text       | null: false                    |
 | category_id        | integer    | null: false                    |
@@ -45,7 +44,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- belongs_to :address
+- has_one :address
 
 
 ## addresses テーブル
