@@ -7,22 +7,22 @@ RSpec.describe User, type: :model do
 
   describe 'ユーザー新規登録' do
     context '新規登録できる場合' do
-      it "全ての項目の入力が存在すれば登録できる" do
+      it '全ての項目の入力が存在すれば登録できる' do
         expect(@user).to be_valid
       end
     end
     context '新規登録できない場合' do
-      it "nicknameが空では登録できない" do
+      it 'nicknameが空では登録できない' do
         @user.nickname = ''
         @user.valid?
         expect(@user.errors.full_messages).to include "Nickname can't be blank"
       end
-      it "emailが空では登録できない" do
+      it 'emailが空では登録できない' do
         @user.email = ''
         @user.valid?
         expect(@user.errors.full_messages).to include "Email can't be blank"
       end
-      it "passwordが空では登録できない" do
+      it 'passwordが空では登録できない' do
         @user.password = ''
         @user.valid?
         expect(@user.errors.full_messages).to include "Password can't be blank"
@@ -34,7 +34,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include 'Password is too short (minimum is 6 characters)'
       end
       it 'passwordが129文字以上では登録できない' do
-        @user.password =  Faker::Internet.password(min_length: 129, max_length: 150)
+        @user.password = Faker::Internet.password(min_length: 129, max_length: 150)
         @user.password_confirmation = @user.password
         @user.valid?
         expect(@user.errors.full_messages).to include 'Password is too long (maximum is 128 characters)'
@@ -49,19 +49,19 @@ RSpec.describe User, type: :model do
         @user.password = '123456'
         @user.password_confirmation = '123456'
         @user.valid?
-        expect(@user.errors.full_messages).to include "Password must contain both half-width alphanumeric characters"
+        expect(@user.errors.full_messages).to include 'Password must contain both half-width alphanumeric characters'
       end
       it 'passwordが半角英語のみのときに登録できないこと' do
         @user.password = 'abcdef'
         @user.password_confirmation = 'abcdef'
         @user.valid?
-        expect(@user.errors.full_messages).to include "Password must contain both half-width alphanumeric characters"
+        expect(@user.errors.full_messages).to include 'Password must contain both half-width alphanumeric characters'
       end
       it 'passwordが全角のときに登録できないこと' do
         @user.password = '１２３４５A'
         @user.password_confirmation = '１２３４５A'
         @user.valid?
-        expect(@user.errors.full_messages).to include "Password must contain both half-width alphanumeric characters"
+        expect(@user.errors.full_messages).to include 'Password must contain both half-width alphanumeric characters'
       end
 
       it '重複したemailが存在する場合は登録できない' do
@@ -76,27 +76,27 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include 'Email is invalid'
       end
 
-      it "first_nameがない場合は登録できないこと" do
+      it 'first_nameがない場合は登録できないこと' do
         @user.first_name = ''
         @user.valid?
         expect(@user.errors.full_messages).to include "First name can't be blank"
       end
-      it "last_nameがない場合は登録できないこと" do
+      it 'last_nameがない場合は登録できないこと' do
         @user.last_name = ''
         @user.valid?
         expect(@user.errors.full_messages).to include "Last name can't be blank"
       end
-      it "first_name_kanaがない場合は登録できないこと" do
+      it 'first_name_kanaがない場合は登録できないこと' do
         @user.first_name_kana = ''
         @user.valid?
         expect(@user.errors.full_messages).to include "First name kana can't be blank"
       end
-      it "last_name_kanaがない場合は登録できないこと" do
+      it 'last_name_kanaがない場合は登録できないこと' do
         @user.last_name_kana = ''
         @user.valid?
         expect(@user.errors.full_messages).to include "Last name kana can't be blank"
       end
-      it "birthdayがない場合は登録できないこと" do
+      it 'birthdayがない場合は登録できないこと' do
         @user.birthday = ''
         @user.valid?
         expect(@user.errors.full_messages).to include "Birthday can't be blank"
