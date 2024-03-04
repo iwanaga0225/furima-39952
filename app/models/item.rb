@@ -7,15 +7,16 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_date
 
   with_options presence: true do
-    validates :image
+    validates :image,              presence: { message: "can't be blank" }
     validates :name
     validates :content
-    validates :price
     validates :category_id,        numericality: { other_than: 1, message: "can't be blank"}
     validates :status_id,          numericality: { other_than: 1, message: "can't be blank"}
     validates :delivery_charge_id, numericality: { other_than: 1, message: "can't be blank"}
     validates :delivery_area_id,   numericality: { other_than: 0, message: "can't be blank"}
     validates :delivery_date_id,   numericality: { other_than: 1, message: "can't be blank"}
+    validates :price,              numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 },
+      format: { with: /\A[0-9]+\z/ }
   end
 
   belongs_to :user
