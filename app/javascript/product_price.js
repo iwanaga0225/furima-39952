@@ -10,5 +10,5 @@ function product_price() {
       addTaxPrice.innerHTML = taxPrice;
       profit.innerHTML = saleProfit;
   });
-}
+};
 window.addEventListener('turbo:load', product_price);
