@@ -3,7 +3,7 @@ class ItemOrder
   attr_accessor :token, :user_id, :item_id, :postal_code, :delivery_area_id, :city, :street, :building, :phone
 
   with_options presence: true do
-    #validates :token
+    validates :token
     validates :postal_code,      format: { with: /\A\d{3}-\d{4}\z/ }
     validates :delivery_area_id, numericality: { other_than: 0, message: "can't be blank" }
     validates :city

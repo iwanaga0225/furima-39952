@@ -9,11 +9,11 @@ RSpec.describe ItemOrder, type: :model do
       it '全ての項目が入力されていれば購入ができる' do
         expect(@item_order).to be_valid
       end
-      #it 'token(クレジットカード情報)が空だと購入ができない' do
-      #  @item_order.token = nil
-      #  @item_order.valid?
-      #  expect(@item_order.errors.full_messages).to include("Token can't be blank")
-      #end
+      it 'token(クレジットカード情報)が空だと購入ができない' do
+        @item_order.token = nil
+        @item_order.valid?
+        expect(@item_order.errors.full_messages).to include("Token can't be blank")
+      end
       it '郵便番号が空だと購入ができない' do
         @item_order.postal_code = ""
         @item_order.valid?
