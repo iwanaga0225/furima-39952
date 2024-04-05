@@ -11,7 +11,7 @@ working_directory app_path
 pid "#{app_path}/tmp/pids/unicorn.pid"
 
 #ポート番号を指定
-listen 3000
+listen "#{app_path}/tmp/sockets/unicorn.sock"
 
 #通常のログを記録するファイルを指定
 stdout_path "#{app_path}/log/unicorn.stdout.log"
